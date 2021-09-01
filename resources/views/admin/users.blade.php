@@ -1,46 +1,48 @@
-<x-app-layout>
-  
-</x-app-layout>
+@extends('admin.layout')
+@section('content')        
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    @include("admin.admin-css")
-  </head>
-  <body>
-  
-    <div class="container-scroller">
-      @include("admin.navbar")              
-      
-      <div class="container" style="position: relative; top: 60px; ">
-        <table class="table" style="color: white; text-align: center;">
-          <tr style=" background-color: #dc3545;">
-            <th>Name</th>
-            <th>Email</th>
-            <th>Action</th>
-          </tr>
-
-            @foreach($data as $value)
-              <tr>
-                <td>{{$value->name}}</td>
-                <td>{{$value->email}}</td>
-                @if($value->usertype == "0")
-                  <td><a href="{{url('/deleteuser', $value->id)}}" >Delete</a></td>
-                @else
-                  <td>Not Allowed<td> 
-                @endif
-              </tr>
-            @endforeach
-        </table>        
-      </div>
-     
+    <div class="container" style="padding: 100px 60px;">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="panel panel-default">
+                  <div class="panel-heading">
+                      <div class="row">
+                          All Users                         
+                      </div>
+                  </div>
+                  <div class="panel-body">                                      
+                      <table class="table table-striped"  >
+                        <thead  style="background-color: #2A3F54; ">
+                          <tr style="color: white;">
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          @foreach($data as $value)
+                              <tr>
+                                <td>{{$value->name}}</td>
+                                <td>{{$value->email}}</td>
+                                @if($value->usertype == "0")
+                                  <td><a href="{{url('/deleteuser', $value->id)}}" >Delete</a></td>
+                                @else
+                                  <td>Not Allowed<td> 
+                                @endif
+                              </tr>
+                            @endforeach
+                        </tbody>
+                       
+                      </table>  
+                  </div>
+              </div>
+          </div>      
+      </div>     
     </div>              
-     
+        
+@endsection
 
+@push('footer-scripts') 
    
-
-    @include("admin.admin-script")
-   
-  </body>
-</html>
+@endpush
 
