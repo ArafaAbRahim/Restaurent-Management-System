@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Foods;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -9,11 +10,14 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('home');
+        $data = Foods::all();
+        return view('home', compact("data"));
     }
 
     public function redirects()
     {
+        $data = Foods::all();
+
         $usertype = Auth::user()->usertype;
         if($usertype == '1')
         {
@@ -21,7 +25,7 @@ class HomeController extends Controller
         }
         else
         {
-            return view('home');
+            return view('home', compact("data"));
         }
     }
 }
