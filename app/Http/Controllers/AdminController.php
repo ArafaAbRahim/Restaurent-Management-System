@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Chef;
 use App\Models\Foods;
 use App\Models\Reservation;
 use App\Models\User;
@@ -12,7 +13,8 @@ class AdminController extends Controller
     public function user()
     {
         $data = User::all();
-        return view("admin.users",compact("data"));
+        $chefs = Chef::all();
+        return view("admin.users",compact("data", "chefs"));
     }
 
     public function deleteUser($id)
@@ -91,6 +93,31 @@ class AdminController extends Controller
         $data->date = $request->date;
         $data->time = $request->time;
         $data->message = $request->message;
+        $data->save();
+        return redirect()->back();
+    }
+
+
+    public function chefs()
+    {
+        $data = Chef::all();
+        return view("admin.chefs", compact("data"));
+    }
+
+    public function addChef()
+    {
+        return view("admin.add-chef");
+    }
+
+    public function uploadChef(Request $request)
+    {
+        $data = new Chef();
+        $data->name = $request->name;
+        $data->speciality = $request->speciality;
+        $image = $request->image;
+        $imagename = time().'.'.$image->getClientOriginalExtension();
+        $request->image->move('chefimage', $imagename);
+        $data->image = $imagename;
         $data->save();
         return redirect()->back();
     }

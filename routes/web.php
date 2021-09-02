@@ -36,6 +36,11 @@ Route::post('/editmenu/{id}', [AdminController::class, "editMenu"]);
 Route::get('/reservation', [AdminController::class, "reservation"]);
 Route::post('/make-reservation', [AdminController::class, "makeReservation"]);
 
+//For Reservation
+Route::get('/chefs', [AdminController::class, "chefs"]);
+Route::get('/add-chef', [AdminController::class, "addChef"]);
+Route::post('/uploadchef', [AdminController::class, "uploadChef"]);
+
 Route::get('/redirects', [HomeController::class, "redirects"]);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
