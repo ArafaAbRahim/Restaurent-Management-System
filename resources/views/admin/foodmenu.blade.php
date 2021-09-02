@@ -34,7 +34,7 @@
                                         <td>{{$food->price}}</td>
                                         <td>{{$food->description}}</td>                                        
                                         <td>
-                                            <a href="{{url('/deleteitem', $food->id)}}" ><i class="fa fa-edit fa-2x text-info"></i></a>
+                                            <a href="{{url('/updateitem', $food->id)}}" ><i class="fa fa-edit fa-2x text-info"></i></a>
                                             <a href="{{url('/deleteitem', $food->id)}}" onclick="confirm('Are you sure, you want to delete this FoodItem?') || event.stopImmediatePropagation()" style="margin-left: 10px;" ><i class="fa fa-times fa-2x text-danger"></i></a>
                                         </td>
                                     </tr>

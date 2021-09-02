@@ -28,6 +28,8 @@ Route::get('/fooditem', [AdminController::class, "foodItem"]);
 Route::post('/uploadfood', [AdminController::class, "uploadFood"]);
 Route::get('/foods', [AdminController::class, "foodMenu"]);
 Route::get('/deleteitem/{id}', [AdminController::class, "deleteMenu"]);
+Route::get('/updateitem/{id}', [AdminController::class, "updateMenu"]);
+Route::post('/editmenu/{id}', [AdminController::class, "editMenu"]);
 
 Route::get('/redirects', [HomeController::class, "redirects"]);
 

@@ -52,4 +52,26 @@ class AdminController extends Controller
         $data->delete();
         return redirect()->back();
     }
+
+    public function updateMenu($id)
+    {
+        $data = Foods::find($id);
+        return view("admin.edit-fooditem", compact("data"));
+    }
+
+    public function editMenu($id, Request $request)
+    {
+        $data = Foods::find($id);
+        $data->title = $request->title;
+        $data->price = $request->price;
+        $data->description = $request->description;
+        $image = $request->image;
+        $imagename = time().'.'.$image->getClientOriginalExtension();
+        $request->image->move('foodimage', $imagename);
+        $data->image = $imagename;
+        $data->save();
+        return redirect()->back();
+    }
 }
+
+
