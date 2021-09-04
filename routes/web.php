@@ -36,10 +36,13 @@ Route::post('/editmenu/{id}', [AdminController::class, "editMenu"]);
 Route::get('/reservation', [AdminController::class, "reservation"]);
 Route::post('/make-reservation', [AdminController::class, "makeReservation"]);
 
-//For Reservation
+//For Chefs
 Route::get('/chefs', [AdminController::class, "chefs"]);
 Route::get('/add-chef', [AdminController::class, "addChef"]);
 Route::post('/uploadchef', [AdminController::class, "uploadChef"]);
+Route::get('/updatechef/{id}', [AdminController::class, "updateChef"]);
+Route::post('/editchef/{id}', [AdminController::class, "editChef"]);
+Route::get('/deletechef/{id}', [AdminController::class, "deleteChef"]);
 
 Route::get('/redirects', [HomeController::class, "redirects"]);
 

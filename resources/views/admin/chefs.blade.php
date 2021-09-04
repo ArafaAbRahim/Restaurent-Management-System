@@ -33,8 +33,8 @@
                                         <td>{{$chef->speciality}}</td>
                                                                                 
                                         <td>
-                                            <a href="" ><i class="fa fa-edit fa-2x text-info"></i></a>
-                                            <a href="" onclick="confirm('Are you sure, you want to delete this FoodItem?') || event.stopImmediatePropagation()" style="margin-left: 10px;" ><i class="fa fa-times fa-2x text-danger"></i></a>
+                                            <a href="{{url('/updatechef', $chef->id)}}" ><i class="fa fa-edit fa-2x text-info"></i></a>
+                                            <a href="{{url('/deletechef', $chef->id)}}" onclick="confirm('Are you sure, you want to delete this Chef?') || event.stopImmediatePropagation()" style="margin-left: 10px;" ><i class="fa fa-times fa-2x text-danger"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach
