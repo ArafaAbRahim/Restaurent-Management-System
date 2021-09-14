@@ -44,6 +44,9 @@ Route::get('/updatechef/{id}', [AdminController::class, "updateChef"]);
 Route::post('/editchef/{id}', [AdminController::class, "editChef"]);
 Route::get('/deletechef/{id}', [AdminController::class, "deleteChef"]);
 
+//For Cart
+Route::post('/addcart/{id}', [HomeController::class, "addCart"]);
+
 Route::get('/redirects', [HomeController::class, "redirects"]);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

@@ -58,33 +58,24 @@ https://templatemo.com/tm-558-klassy-cafe
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-                            <li class="scroll-to-section"><a href="#about">About</a></li>
-                           	
-                        <!-- 
-                            <li class="submenu">
-                                <a href="javascript:;">Drop Down</a>
-                                <ul>
-                                    <li><a href="#">Drop Down Page 1</a></li>
-                                    <li><a href="#">Drop Down Page 2</a></li>
-                                    <li><a href="#">Drop Down Page 3</a></li>
-                                </ul>
-                            </li>
-                        -->
+                            <li class="scroll-to-section"><a href="#about">About</a></li>                           	                   
                             <li class="scroll-to-section"><a href="#menu">Menu</a></li>
                             <li class="scroll-to-section"><a href="#chefs">Chefs</a></li> 
-                            <li class="submenu">
-                                <a href="javascript:;">Features</a>
-                                <ul>
-                                    <li><a href="#">Features Page 1</a></li>
-                                    <li><a href="#">Features Page 2</a></li>
-                                    <li><a href="#">Features Page 3</a></li>
-                                    <li><a href="#">Features Page 4</a></li>
-                                </ul>
-                            </li>
+                            
                             <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
                             <li class="scroll-to-section"><a href="#reservation">Contact Us</a></li> 
+                            <li class="scroll-to-section">
+                                <a href="#top" class="active">
+                                    @auth
+                                        Cart[{{$count}}]
+                                    @endauth
+                                    @guest
+                                        Cart
+                                    @endguest
+                                </a>
+                            </li>
 
-                            <li>
+                            <li class="scroll-to-section">
                                  @if (Route::has('login'))
                                     <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                                         @auth
@@ -93,12 +84,12 @@ https://templatemo.com/tm-558-klassy-cafe
     
                                                 </x-app-layout>
                                             </li>
-                                        @else
-                                           <li><a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a></li>
+                                            @else
+                                            <li><a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a></li>
 
-                                            @if (Route::has('register'))
-                                                <li><a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a></li>
-                                            @endif
+                                                @if (Route::has('register'))
+                                                    <li><a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a></li>
+                                                @endif
                                         @endauth
                                     </div>
                                 @endif
@@ -197,7 +188,62 @@ https://templatemo.com/tm-558-klassy-cafe
     </section>
     <!-- ***** About Area Ends ***** -->
 
-   @include("food")
+    <!-- ***** Menu Area Starts ***** -->
+    <section class="section" id="menu">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="section-heading">
+                        <h6>Our Menu</h6>
+                        <h2>Our selection of cakes with quality taste</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="menu-item-carousel">
+            <div class="col-lg-12">
+                <div class="owl-menu-item owl-carousel">
+                    @foreach($data as $food)
+                        <form action="{{url('/addcart', $food->id)}}" method="post">
+                            @csrf
+                            <div class="item">
+                                <div class='card' style="background-image: url('/foodimage/{{$food->image}}');">
+                                    <div class="price">
+                                        <h6>${{$food->price}}</h6>                                    
+                                    </div>
+                                    <div class='info'>
+                                        <h1 class='title'>{{$food->title}}</h1>
+                                        <p class='description'>{{$food->description}}</p>                                                                     
+                                        <div class="main-text-button">
+                                            <div class="scroll-to-section"><a href="#reservation">Make Reservation <i class="fa fa-angle-down"></i></a></div>
+                                        </div>   
+                                    </div>
+                                </div>                                                                                        
+                            
+                                <div class="contact-form" style="margin-top: 20px;">
+                                    <div class="col-lg-12">
+                                        <div class="row">
+                                            <div class="col-lg-5" >
+                                                <fieldset>
+                                                    <input type="number" name="quantity" min="1" value="1" style="width: 100px; height: 43px; border: 2px solid #fb5849;" >
+                                                </fieldset>
+                                            </div>
+                                            <div class="col-lg-7" style="top: 7px;">
+                                                <fieldset>
+                                                    <button type="submit" id="form-submit" class="main-button-icon">Add to Cart</button>
+                                                </fieldset>
+                                            </div>
+                                        </div>                                       
+                                    </div>
+                                </div>                            
+                            </div>           
+                        </form>             
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Menu Area Ends ***** -->
 
     <!-- ***** Chefs Area Starts ***** -->
     <section class="section" id="chefs">
