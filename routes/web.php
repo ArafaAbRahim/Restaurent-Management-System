@@ -46,6 +46,7 @@ Route::get('/deletechef/{id}', [AdminController::class, "deleteChef"]);
 
 //For Cart
 Route::post('/addcart/{id}', [HomeController::class, "addCart"]);
+Route::get('/showcart/{id}', [HomeController::class, "showCart"]);
 
 Route::get('/redirects', [HomeController::class, "redirects"]);
 

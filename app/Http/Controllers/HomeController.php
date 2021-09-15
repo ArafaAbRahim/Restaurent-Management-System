@@ -13,7 +13,7 @@ class HomeController extends Controller
     public function index()
     {
         $data = Foods::all();
-        $chefs = Chef::all();
+        $chefs = Chef::all();        
         return view('home', compact("data", "chefs"));
     }
 
@@ -55,5 +55,13 @@ class HomeController extends Controller
         {
             return redirect('/login');
         }
+    }
+
+    public function showCart(Request $request, $id)
+    {
+        $user_id = Auth::id();
+        $count = Cart::where('user_id', $user_id)->count();
+        $data = Cart::where('user_id', $id)->join('foods', 'carts.food_id', '=', 'foods.id')->get();
+        return view('cart', compact( "count", "data"));
     }
 }
