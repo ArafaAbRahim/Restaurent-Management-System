@@ -48,6 +48,7 @@ Route::get('/deletechef/{id}', [AdminController::class, "deleteChef"]);
 Route::post('/addcart/{id}', [HomeController::class, "addCart"]);
 Route::get('/showcart/{id}', [HomeController::class, "showCart"]);
 Route::get('/delete-cart-item/{id}', [HomeController::class, "deleteCartItem"]);
+Route::post('/order-confirm', [HomeController::class, "orderConfirm"]);
 
 Route::get('/redirects', [HomeController::class, "redirects"]);
 
