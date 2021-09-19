@@ -66,7 +66,8 @@
                   <li><a href="{{url('/users')}}"><i class="fa fa-home"></i> User </a></li>                    
                   <li><a href="{{url('/foods')}}"><i class="fa fa-home"></i> Food Menu </a></li>    
                   <li><a href="{{url('/chefs')}}"><i class="fa fa-home"></i> Chefs </a></li>    
-                  <li><a href="{{url('/reservation')}}"><i class="fa fa-home"></i> Reservation </a></li>                                                        
+                  <li><a href="{{url('/reservation')}}"><i class="fa fa-home"></i> Reservation </a></li>
+                  <li><a href="{{url('/orders')}}"><i class="fa fa-home"></i> Orders </a></li>                                                        
                 </ul>
               </div>              
             </div>            

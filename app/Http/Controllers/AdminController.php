@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Chef;
 use App\Models\Foods;
+use App\Models\Order;
 use App\Models\Reservation;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -146,6 +147,13 @@ class AdminController extends Controller
         $data = Chef::find($id);
         $data->delete();
         return redirect()->back();
+    }
+
+
+    public function order()
+    {
+        $data = Order::all();
+        return view("admin.order", compact("data"));
     }
 }
 

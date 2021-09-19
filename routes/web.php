@@ -50,6 +50,8 @@ Route::get('/showcart/{id}', [HomeController::class, "showCart"]);
 Route::get('/delete-cart-item/{id}', [HomeController::class, "deleteCartItem"]);
 Route::post('/order-confirm', [HomeController::class, "orderConfirm"]);
 
+Route::get('/orders', [AdminController::class, "order"]);
+
 Route::get('/redirects', [HomeController::class, "redirects"]);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
