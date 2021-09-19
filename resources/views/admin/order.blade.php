@@ -6,7 +6,18 @@
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        All Order Items
+                    <div class="row">
+                            <div class="col-md-9">
+                                All Order Items
+                            </div>
+                            <div class="col-md-3">
+                                <form action="{{url('/search')}}" method="post">
+                                    @csrf
+                                    <input type="text"  name="search" >
+                                    <button type="submit"><i class="fa fa-search"></i></button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                     <div class="panel-body">         
                         <table class="table table-striped"  >

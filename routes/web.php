@@ -51,6 +51,7 @@ Route::get('/delete-cart-item/{id}', [HomeController::class, "deleteCartItem"]);
 Route::post('/order-confirm', [HomeController::class, "orderConfirm"]);
 
 Route::get('/orders', [AdminController::class, "order"]);
+Route::post('/search', [AdminController::class, "search"]);
 
 Route::get('/redirects', [HomeController::class, "redirects"]);
 
